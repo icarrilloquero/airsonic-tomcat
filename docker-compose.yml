@@ -1,0 +1,19 @@
+version: "3"
+services:
+
+  tomcat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: icarrilloquero/rpi-airsonic
+    volumes:
+      - ${MUSIC_FOLDER}:/var/music
+      - airsonic-config:/var/airsonic
+    environment:
+      - TZ=Europe/Madrid
+    ports:
+      - ${AIRSONIC_PORT:-8080}:8080/tcp
+    restart: unless-stopped
+
+volumes:
+  airsonic-config:
