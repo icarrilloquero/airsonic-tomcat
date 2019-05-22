@@ -8,6 +8,7 @@ services:
     image: icarrilloquero/rpi-airsonic
     volumes:
       - ${MUSIC_FOLDER}:/var/music
+      - ${OST_FOLDER}:/var/ost
       - airsonic-config:/var/airsonic
     environment:
       - TZ=Europe/Madrid

@@ -18,9 +18,10 @@ EXPOSE $AIRSONIC_PORT/tcp
 HEALTHCHECK --interval=15s --timeout=3s CMD wget -q http://localhost:"$AIRSONIC_PORT""$CONTEXT_PATH"rest/ping -O /dev/null || exit 1
 
 VOLUME /var/music
+VOLUME /var/ost
 VOLUME /var/playlists
 VOLUME /var/airsonic
 
 # Download WAR
 RUN ["rm", "-fr", "/usr/local/tomcat/webapps/*"]
-ADD https://github.com/airsonic/airsonic/releases/download/v10.2.1/airsonic.war $CATALINA_HOME/webapps/airsonic.war
+ADD https://github.com/airsonic/airsonic/releases/download/v10.3.1/airsonic.war $CATALINA_HOME/webapps/airsonic.war
